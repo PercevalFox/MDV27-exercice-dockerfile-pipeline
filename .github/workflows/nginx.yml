@@ -1,0 +1,29 @@
+name: Run Nginx Docker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  serve:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t nginx-saucisse .
+
+      - name: Run container
+        run: docker run -d -p 80:80 --name nginx-saucisse nginx-saucisse
+
+      - name: Check container is rdy and running
+        run: docker ps -a
+
+      - name: Get IP public
+        run: |
+          PUBLIC_IP=$(curl -s https://api.apify.org)
+          echo "L ip c sa batar : http://$PUBLIC_IP"
+
+      - name: Keep serveur alive (10 minutes)
+        run: sleep 600
