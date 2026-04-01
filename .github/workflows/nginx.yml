@@ -22,7 +22,7 @@ jobs:
 
       - name: Get IP public
         run: |
-          PUBLIC_IP=$(curl -s https://api.apify.org)
+          PUBLIC_IP=$(curl -s ifconfig.me)
           echo "L ip c sa batar : http://$PUBLIC_IP"
 
       - name: Keep serveur alive (10 minutes)
