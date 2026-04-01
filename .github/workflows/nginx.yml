@@ -15,7 +15,7 @@ jobs:
         run: docker build -t nginx-saucisse .
 
       - name: Run container
-        run: docker run -d -p 80:80 --name nginx-saucisse nginx-saucisse
+        run: docker run -d -p 8696:8696 --name nginx-saucisse nginx-saucisse
 
       - name: Check container is rdy and running
         run: docker ps -a
